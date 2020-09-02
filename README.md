@@ -1,13 +1,13 @@
 # AppVersionGradleScript
 Gradle Script for Automate app version.
-----
 
-##Steps for Automation
+
+Steps for Automation
 ----
 
 1.  Create new Resource Bundle file *(name : version)*
 
-######Go app > New  > Resource Bundle Go app > New  > Resource Bundle
+    Go app > New  > Resource Bundle Go app > New  > Resource Bundle
 
 2.  Open and write version.properties file in app module 
     ```VERSION_NUMBER=1
