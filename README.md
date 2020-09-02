@@ -6,14 +6,16 @@ Gradle Script for Automate app version.
 ----
 
 1.  Create new Resource Bundle file *(name : version)*
+
 ######Go app > New  > Resource Bundle Go app > New  > Resource Bundle
 
 2.  Open and write version.properties file in app module 
-    VERSION_NUMBER=1
+    ```VERSION_NUMBER=1
     VERSION_MINOR=0
     VERSION_BUILD=0
     VERSION_PATCH=0
     VERSION_MAJOR=0
+    ```
 3.  Open build.gradle (Module: app)
 
 ```groovy
