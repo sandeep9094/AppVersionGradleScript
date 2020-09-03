@@ -10,7 +10,8 @@ Steps for Creating Gradle Build Script
     <i> <h6>Go app > New  > Resource Bundle Go app > New  > Resource Bundle</h6> </i>
 
 2.  Open and write version.properties file in app module 
-    ```VERSION_NUMBER=1
+    ```
+    VERSION_NUMBER=1
     VERSION_MINOR=0
     VERSION_BUILD=0
     VERSION_PATCH=0
