@@ -2,7 +2,7 @@
 Gradle Script for Automate app version.
 
 
-Steps for Automation
+Steps for Creating Gradle Build Script
 ----
 
 1.  Create new Resource Bundle file *(name : version)*
@@ -16,7 +16,7 @@ Steps for Automation
     VERSION_PATCH=0
     VERSION_MAJOR=0
     ```
-3.  Open build.gradle (Module: app)
+3.  Open build.gradle (Module: app) and below line of codes.
 
 ```groovy
 /**
