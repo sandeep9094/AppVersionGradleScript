@@ -7,7 +7,7 @@ Steps for Automation
 
 1.  Create new Resource Bundle file *(name : version)*
 
-    <i>Go app > New  > Resource Bundle Go app > New  > Resource Bundle</i>
+    <i> <h6>Go app > New  > Resource Bundle Go app > New  > Resource Bundle</h6> </i>
 
 2.  Open and write version.properties file in app module 
     ```VERSION_NUMBER=1
