@@ -1,7 +1,7 @@
 # AppVersionGradleScript
 Gradle Script for Automate app version.
 
-<h5>AutoIncrement Version Code gradle script is implmented in demo project.<h5>
+<h5>Gradle script is implmented in demo project which is given below.<h5>
 
 Steps for Creating Gradle Build Script
 ----
