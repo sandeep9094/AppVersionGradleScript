@@ -8,7 +8,7 @@ Steps for Creating Gradle Build Script
 
 1.  Create new Resource Bundle file *(name : version)*
 
-    <i><h6> app > New  > Resource Bundle Go app > New  > Resource Bundle</h6> </i>
+    <i><h6> app > New  > Resource Bundle</h6> </i>
 
 2.  Open and write version.properties file in app module 
     ```
