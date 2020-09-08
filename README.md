@@ -18,7 +18,7 @@ Steps for Creating Gradle Build Script
     VERSION_PATCH=0
     VERSION_MAJOR=0
     ```
-3.  Open build.gradle (Module: app) and below line of codes.
+3.  Open build.gradle (Module: app) and gradle script lines as shown below.
 
 ```groovy
 /**
