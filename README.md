@@ -10,7 +10,7 @@ Steps for Creating Gradle Build Script
 
     <i><h6> app > New  > Resource Bundle</h6> </i>
 
-2.  Open and write version.properties file in app module 
+2.  Open <i>version.properties</i> and write version.properties file in app module 
     ```
     VERSION_NUMBER=1
     VERSION_MINOR=0
