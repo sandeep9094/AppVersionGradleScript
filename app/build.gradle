@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
@@ -10,14 +11,15 @@ android {
      * Auto Increment Build Version Script
      */
     def versionPropsFile = file('version.properties')
-
-/*Setting default value for versionBuild which is the last incremented value stored in the file */
+    def appVersionName = ""
+    def appReleaseFileName = ""
+    /*Setting default value for versionBuild which is the last incremented value stored in the file */
     if (versionPropsFile.canRead()) {
         Properties versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
         def value = 0
         def runTasks = gradle.startParameter.taskNames
-        if ('assemble' in runTasks || 'assemebleRelease' in runTasks || 'aR' in runTasks) {
+        if ('assemble' in runTasks || 'assembleRelease' in runTasks || 'aR' in runTasks) {
             value = 1
         }
 
@@ -35,23 +37,41 @@ android {
 
         versionProps.store(versionPropsFile.newWriter(), null)
 
+        appVersionName = "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+        appReleaseFileName = "AutoBuildGradleScript v${appVersionName}.apk"
+
         defaultConfig {
             applicationId "com.developidea.gradlebuildexample"
             minSdkVersion 16
             targetSdkVersion 30
             versionCode versionNumber
-            versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+            versionName appVersionName
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
         }
+
     } else {
         throw new FileNotFoundException("Could not find version.properties")
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = appReleaseFileName
+                }
+            }
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = appReleaseFileName
+                }
+            }
         }
     }
 }
