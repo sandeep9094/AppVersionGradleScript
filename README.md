@@ -31,11 +31,14 @@ if (versionPropsFile.canRead()) {
         Properties versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
         def value = 0
-        def runTasks = gradle.startParameter.taskNames
-        if ('assemble' in runTasks || 'assemebleRelease' in runTasks || 'aR' in runTasks) {
-            value = 1
+        try {
+            def releaseBuildTask = getTasks().findByName('assemble').name
+            if ('assemble' in releaseBuildTask) {
+                value = 1
+            }
+        } catch(Exception exception) {
+            println "Unable to found Release build Running Tasks"
         }
-    
         //Getting Strings from version.properties
         def versionMajor = versionProps['VERSION_MAJOR'].toInteger()
         def versionMinor = versionProps['VERSION_MINOR'].toInteger()
@@ -58,6 +61,7 @@ if (versionPropsFile.canRead()) {
             versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
+            archivesBaseName = "${applicationId}_v${versionName}"
         }
     } else {
         throw new FileNotFoundException("Could not find version.properties")

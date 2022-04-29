@@ -18,9 +18,13 @@ android {
         Properties versionProps = new Properties()
         versionProps.load(new FileInputStream(versionPropsFile))
         def value = 0
-        def runTasks = gradle.startParameter.taskNames
-        if ('assemble' in runTasks || 'assembleRelease' in runTasks || 'aR' in runTasks) {
-            value = 1
+        try {
+            def releaseBuildTask = getTasks().findByName('assemble').name
+            if ('assemble' in releaseBuildTask) {
+                value = 1
+            }
+        } catch(Exception exception) {
+            println "Unable to found Release build Running Tasks"
         }
 
         //Getting Strings from version.properties
@@ -48,6 +52,7 @@ android {
             versionName appVersionName
             testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
             multiDexEnabled true
+            archivesBaseName = "${applicationId}_v${versionName}"
         }
 
     } else {
